@@ -14,16 +14,22 @@ public class AcademyApp {
         this.out = out;
     }
 
-    public void run(){
+    public void run() {
         while (true) {
             printMenu();
             out.print("Select: ");
-            String choice = in.hasNextLine() ? in.nextLine().trim(): "0";
-            switch (Integer.parseInt(choice)) {
+            String choice = in.hasNextLine() ? in.nextLine().trim() : "0";
+            int option;
+            try {
+                option = Integer.parseInt(choice);
+            } catch (NumberFormatException e) {
+                out.println("Invalid option");
+                continue;
+            }
+            switch (option) {
                 case 0:
                     out.println("Bye");
-                    break;
-                    
+                    return; // WAJIB return, bukan break — supaya loop berhenti
                 case 1:
                     listCourses();
                     break;
@@ -59,10 +65,10 @@ public class AcademyApp {
     }
 
     private void printMenu() {
-        out.println(academy.getName());
+        out.println("=== " + academy.getName() + " ===");
         out.println("1. List courses");
         out.println("2. Add online course");
-        out.println("3. Add offline courses");
+        out.println("3. Add offline course");
         out.println("4. Add workshop");
         out.println("5. Register student");
         out.println("6. Enroll student");
@@ -99,10 +105,6 @@ public class AcademyApp {
         String title = in.nextLine();
         out.print("Year: ");
         String yearStr = in.nextLine();
-        if (isBlank(code) || isBlank(title)) {
-            out.println("Invalid input");
-            return;
-        }
         int year;
         try {
             year = Integer.parseInt(yearStr.trim());
@@ -122,21 +124,17 @@ public class AcademyApp {
             String expertise = in.nextLine();
             instructor = new Instructor(instrName.trim(), expertise);
         }
-        OnlineCourse course;
         try {
-            if (instructor != null) {
-                course = new OnlineCourse(code, title, year, instructor);
+            OnlineCourse course = (instructor != null)
+                    ? new OnlineCourse(code, title, year, instructor)
+                    : new OnlineCourse(code, title, year);
+            if (academy.addCourse(course)) {
+                out.println("Course added");
             } else {
-                course = new OnlineCourse(code, title, year);
+                out.println("Academy is full");
             }
         } catch (IllegalArgumentException e) {
             out.println("Invalid input");
-            return;
-        }
-        if (academy.addCourse(course)) {
-            out.println("Course added");
-        } else {
-            out.println("Academy is full");
         }
     }
 
@@ -162,17 +160,15 @@ public class AcademyApp {
             out.println("Invalid input");
             return;
         }
-        OfflineCourse course;
         try {
-            course = new OfflineCourse(title, year, room);
+            OfflineCourse course = new OfflineCourse(title, year, room);
+            if (academy.addCourse(course)) {
+                out.println("Course added");
+            } else {
+                out.println("Academy is full");
+            }
         } catch (IllegalArgumentException e) {
             out.println("Invalid input");
-            return;
-        }
-        if (academy.addCourse(course)) {
-            out.println("Course added");
-        } else {
-            out.println("Academy is full");
         }
     }
 
@@ -209,17 +205,15 @@ public class AcademyApp {
             out.println("Invalid input");
             return;
         }
-        Workshop course;
         try {
-            course = new Workshop(title, year, seats);
+            Workshop course = new Workshop(title, year, seats);
+            if (academy.addCourse(course)) {
+                out.println("Course added");
+            } else {
+                out.println("Academy is full");
+            }
         } catch (IllegalArgumentException e) {
             out.println("Invalid input");
-            return;
-        }
-        if (academy.addCourse(course)) {
-            out.println("Course added");
-        } else {
-            out.println("Academy is full");
         }
     }
 
@@ -236,7 +230,7 @@ public class AcademyApp {
                 out.println("Student ID already exists");
             }
         } catch (IllegalArgumentException e) {
-            out.println("Student ID already exists");
+            out.println("Invalid input");
         }
     }
 

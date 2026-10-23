@@ -14,14 +14,11 @@ public class OfflineCourse extends Course {
 
     @Override
     public String describe() {
-        // TODO Auto-generated method stub
-        return super.describe() + " [room "+room+"]";
+        return super.describe() + " [room " + room + "]";
     }
 
     @Override
     public int durationWeeks() {
-        // TODO Auto-generated method stub
         return 10;
     }
-    
 }

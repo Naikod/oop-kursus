@@ -6,44 +6,47 @@ public class Course {
     private boolean available;
     private int extraWeeks;
 
-    public Course(String title, int year){
+    public Course(String title, int year) {
+        if (title == null || title.trim().isEmpty()) {
+            throw new IllegalArgumentException("Title tidak boleh kosong");
+        }
+        if (year < 2015) {
+            throw new IllegalArgumentException("Tahun harus >= 2015");
+        }
         this.title = title;
         this.year = year;
         this.available = true;
         this.extraWeeks = 0;
     }
 
-    public String getTitle(){
-        if(title ==null || title.trim().isEmpty()){
-            throw new IllegalArgumentException("Title tidak boleh kosong!");
-        }
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title){
-        if(title==null||title.trim().isEmpty()){
+    public void setTitle(String title) {
+        if (title == null || title.trim().isEmpty()) {
             throw new IllegalArgumentException("Title tidak boleh kosong");
         }
         this.title = title;
     }
 
-    public int getYear(){
+    public int getYear() {
         return year;
     }
 
-    public void setYear(int year){
+    public void setYear(int year) {
         if (year < 2015) {
-            throw new IllegalArgumentException("Tahun harus lebih 2015");
+            throw new IllegalArgumentException("Tahun harus >= 2015");
         }
         this.year = year;
     }
 
-    public boolean isAvailable(){
+    public boolean isAvailable() {
         return available;
     }
 
-    public boolean takeSeat(){
-        if(!available){
+    public boolean takeSeat() {
+        if (!available) {
             return false;
         }
         available = false;
@@ -54,30 +57,31 @@ public class Course {
         available = true;
     }
 
-    public int durationWeeks(){
+    public int durationWeeks() {
         return 2;
     }
 
-    public String describe(){
+    public String describe() {
         return title + " (" + year + ")";
     }
 
-    @Override 
-    public String toString(){
+    @Override
+    public String toString() {
         return describe();
     }
 
-    public void extendEnrollment(){
+    public void extendEnrollment() {
         extraWeeks += 4;
-    }    
-    
-    public void extendEnrollment(int weeks){
-        if(weeks <= 0){
+    }
+
+    public void extendEnrollment(int weeks) {
+        if (weeks <= 0) {
             throw new IllegalArgumentException("Minggu harus positif!");
         }
         extraWeeks += weeks;
-    }    
-    public int getTotalWeeks(){
+    }
+
+    public int getTotalWeeks() {
         return durationWeeks() + extraWeeks;
     }
 }
