@@ -15,28 +15,31 @@ package id.ac.polinema.uts.kursus;
  */
 public class Instructor {
 
+    private String name;
+    private String expertise;
     /** Membuat pengajar dengan nama dan bidang keahlian. */
     public Instructor(String name, String expertise) {
         // TODO Bantuan: nama parameter sama dengan nama field. Kata kunci apa yang
         // menunjuk ke objek yang sedang dibuat?
         //
         // Kerangka:
-        //   this.name = ____;
-        //   this.expertise = ____;
-        throw new UnsupportedOperationException("Not implemented yet");
+          this.name = name;
+          this.expertise = expertise;
+        // throw new UnsupportedOperationException("Not implemented yet");
     }
 
     public String getName() {
         // TODO Bantuan: kembalikan data yang disimpan constructor.
         //
         // Kerangka:
-        //   return ____;
-        throw new UnsupportedOperationException("Not implemented yet");
+          return name;
+        // throw new UnsupportedOperationException("Not implemented yet");
     }
 
     public String getExpertise() {
         // TODO Bantuan: sama seperti getName.
-        throw new UnsupportedOperationException("Not implemented yet");
+        return expertise;
+        // throw new nsupportedOperationException("Not implemented yet");
     }
 
     /** Teks berbentuk "nama (keahlian)". Contoh: Hendra Wijaya (Databases). */
@@ -44,7 +47,7 @@ public class Instructor {
         // TODO Bantuan: gabungkan dua data dengan operator + dan tanda kurung dalam String.
         //
         // Kerangka:
-        //   return name + " (" + ____ + ")";
-        throw new UnsupportedOperationException("Not implemented yet");
+          return name + " (" + expertise + ")";
+        // throw new UnsupportedOperationException("Not implemented yet");
     }
 }
