@@ -16,7 +16,7 @@ public class Main {
         // TODO: Tampilkan sebuah teks ke layar.
         // Di Java, perintahnya berbentuk: System.out.println("teks kamu");
         // Ganti teks di dalam tanda kutip dengan teks dari soal. Huruf besar-kecil dan
-        System.out.println(" ------ ");
+        System.out.println("Welcome to Polinema Academy");
         Academy academy = new Academy("Poltek Academy");
         Instructor dewi = new Instructor("Dewi Lestari", "Software Engineering");
         OnlineCourse java = new OnlineCourse("OOP-101", "Java Basics", 2023, dewi);

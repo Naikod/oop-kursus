@@ -31,6 +31,9 @@ public class OnlineCourse extends Course{
         if(code==null || code.trim().isEmpty()){
             throw new IllegalArgumentException("Code tidak boleh kosong!");
         }
+        if(title==null || title.trim().isEmpty()){
+            throw new IllegalArgumentException("Code tidak boleh kosong!");
+        }
 
         // TODO Bantuan: isi semua field. Kursus baru: apakah kursinya sudah terisi atau belum?
         // Bagian 3: aturan validasi judul dan tahun sama dengan setter. Bisakah constructor

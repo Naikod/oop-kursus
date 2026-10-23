@@ -21,7 +21,7 @@ public class AcademyApp {
             String choice = in.hasNextLine() ? in.nextLine().trim(): "0";
             switch (Integer.parseInt(choice)) {
                 case 0:
-                    out.println("Dada!");
+                    out.println("Bye");
                     break;
                     
                 case 1:
@@ -52,7 +52,7 @@ public class AcademyApp {
                     listStudents();
                     break;
                 default:
-                    out.println("Dada!");
+                    out.println("Invalid option");
                     break;
             }
         }
@@ -61,14 +61,14 @@ public class AcademyApp {
     private void printMenu() {
         out.println(academy.getName());
         out.println("1. List courses");
-        out.println("2. Add online courses");
+        out.println("2. Add online course");
         out.println("3. Add offline courses");
         out.println("4. Add workshop");
         out.println("5. Register student");
         out.println("6. Enroll student");
-        out.println("7. Drop courses");
-        out.println("8. Search student");
-        out.println("9. List student");
+        out.println("7. Drop course");
+        out.println("8. Search courses");
+        out.println("9. List students");
         out.println("0. Exit");
     }
 
@@ -267,7 +267,7 @@ public class AcademyApp {
     private void searchCourses() {
         out.print("Keyword: ");
         String keyword = in.nextLine();
-        Course[] found = academy.searchByKeywords(keyword);
+        Course[] found = academy.searchByKeyword(keyword);
         if (found.length == 0) {
             out.println("No courses found");
             return;

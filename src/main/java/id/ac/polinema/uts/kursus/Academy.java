@@ -29,7 +29,7 @@ public class Academy {
     }
     
     public boolean addStudent(Student student){
-        if(student==null||studentCount>=20){
+        if(student==null||studentCount>=10){
             return false;
         }
         if(findStudent(student.getStudentId()) != null){
@@ -81,7 +81,7 @@ public class Academy {
         return null;
     }
 
-    public Course[] searchByKeywords(String keyword){
+    public Course[] searchByKeyword(String keyword){
         if (keyword == null) {
             return new Course[0];
         }

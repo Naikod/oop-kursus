@@ -14,11 +14,14 @@ public class Course {
     }
 
     public String getTitle(){
+        if(title ==null || title.trim().isEmpty()){
+            throw new IllegalArgumentException("Title tidak boleh kosong!");
+        }
         return title;
     }
 
     public void setTitle(String title){
-        if(title==null||!title.trim().isEmpty()){
+        if(title==null||title.trim().isEmpty()){
             throw new IllegalArgumentException("Title tidak boleh kosong");
         }
         this.title = title;
@@ -56,7 +59,7 @@ public class Course {
     }
 
     public String describe(){
-        return title + " ( "+year+")";
+        return title + " ("+year+")";
     }
 
     @Override 
