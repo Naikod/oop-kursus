@@ -18,9 +18,10 @@ public class Course {
     }
 
     public void setTitle(String title){
-        if(title!=null||!title.trim().isEmpty()){
-            this.title = title;
+        if(title==null||!title.trim().isEmpty()){
+            throw new IllegalArgumentException("Title tidak boleh kosong");
         }
+        this.title = title;
     }
 
     public int getYear(){
@@ -28,9 +29,10 @@ public class Course {
     }
 
     public void setYear(int year){
-        if (year > 2015) {
-            this.year = year;
+        if (year < 2015) {
+            throw new IllegalArgumentException("Tahun harus lebih 2015");
         }
+        this.year = year;
     }
 
     public boolean isAvailable(){
@@ -67,9 +69,10 @@ public class Course {
     }    
     
     public void extendEnrollment(int weeks){
-        if(weeks > 0){
-            extraWeeks += weeks;
+        if(weeks <= 0){
+            throw new IllegalArgumentException("Minggu harus positif!");
         }
+        extraWeeks += weeks;
     }    
     public int getTotalWeeks(){
         return durationWeeks() + extraWeeks;
