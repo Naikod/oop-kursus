@@ -17,7 +17,7 @@ public class Main {
         // Di Java, perintahnya berbentuk: System.out.println("teks kamu");
         // Ganti teks di dalam tanda kutip dengan teks dari soal. Huruf besar-kecil dan
         System.out.println("Welcome to Polinema Academy");
-        Academy academy = new Academy("Poltek Academy");
+        Academy academy = new Academy("Polinema Academy");
         Instructor dewi = new Instructor("Dewi Lestari", "Software Engineering");
         OnlineCourse java = new OnlineCourse("OOP-101", "Java Basics", 2023, dewi);
         OfflineCourse db = new OfflineCourse("Database", 2021, "R-204");
